@@ -1,0 +1,29 @@
+
+
+<div class="card-group row">
+  <ng-container *ngFor="let item of filteredProducts">
+    <div class="col-md-2" 
+    *ngIf="item.quantity != 0"
+    style="margin-inline: 60px;"
+    >
+      <div class="card" appHoverCard [bgColor]="'#eeeeee'">
+        <img [src]="item.img" class="card-img-top" alt="..." />
+        <div
+          class="card-body"
+          [ngClass]="item.quantity == 1 ? 'bg-warning' : ''"
+        >
+          <h4 class="card-title">{{ item.name }}</h4>
+          <p class="card-text">price is: ${{ item.price }}</p>
+          <p class="card-text">Quantity: {{ item.quantity }}</p>
+          <button class="btn btn-success" (click)="buyProduct(item)">
+            Buy Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<h3>{{ egyptianNationalId | pipeTransform : "FullDate" }}</h3>
+<h3>{{ creditCardId | creditPipe }}</h3>
+<!-- [class.d-none]="item.categoryID != selectedCatId && selectedCatId != 0"  -->
